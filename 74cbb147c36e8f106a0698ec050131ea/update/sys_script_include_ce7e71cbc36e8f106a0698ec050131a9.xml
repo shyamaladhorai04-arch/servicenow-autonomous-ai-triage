@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_1622431_autono_0.AITriageEngine</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <mobile_callable>false</mobile_callable>
+        <name>AITriageEngine</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script><![CDATA[var AITriageEngine = Class.create();
+AITriageEngine.prototype = {
+    initialize: function() {},
+
+    // 1. Calculate Priority based on Keywords
+    evaluatePriority: function(shortDesc) {
+        if (!shortDesc) return 3; // Default to moderate if no description
+        var text = shortDesc.toLowerCase();
+        if (text.indexOf("outage") > -1 || text.indexOf("server down") > -1 || text.indexOf("database crash") > -1) {
+            return 1; // Critical P1
+        } else if (text.indexOf("hardware") > -1 || text.indexOf("laptop") > -1 || text.indexOf("vpn") > -1) {
+            return 2; // High P2
+        }
+        return 3; // Moderate P3
+    },
+
+    // 2. Mock Agentic AI Logic (Generates automated workaround based on issue)
+    generateFixPlan: function(shortDesc) {
+        if (!shortDesc) return "No description provided for triage.";
+        var text = shortDesc.toLowerCase();
+        var plan = "[AI] Agentic Triage Plan:\n";
+
+        if (text.indexOf("vpn") > -1) {
+            plan += "- Root Cause: Gateway connection timeout.\n- Action Step 1: Clear local DNS cache.\n- Action Step 2: Restart Cisco AnyConnect Service.\n- Action Step 3: Re-authenticate via SSO portal.";
+        } else if (text.indexOf("laptop") > -1 || text.indexOf("hardware") > -1) {
+            plan += "- Root Cause: Hardware failure/peripheral disconnect.\n- Action Step 1: Query CMDB asset registry.\n- Action Step 2: Auto-route ticket to Hardware Support Group.\n- Action Step 3: Trigger IT inventory dispatch request.";
+        } else {
+            plan += "- Root Cause: Standard L1 software query.\n- Action Step 1: Search Knowledge Base for KB001092.\n- Action Step 2: Send diagnostic survey link to caller.";
+        }
+
+        return plan;
+    },
+
+    type: 'AITriageEngine'
+};
+]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-08-11 12:49:55</sys_created_on>
+        <sys_id>ce7e71cbc36e8f106a0698ec050131a9</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>AITriageEngine</sys_name>
+        <sys_package display_value="Autonomous AI Incident Triage" source="x_1622431_autono_0">74cbb147c36e8f106a0698ec050131ea</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Autonomous AI Incident Triage">74cbb147c36e8f106a0698ec050131ea</sys_scope>
+        <sys_update_name>sys_script_include_ce7e71cbc36e8f106a0698ec050131a9</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-08-11 12:49:55</sys_updated_on>
+    </sys_script_include>
+</record_update>
