@@ -18,3 +18,4 @@ An end-to-end automated incident classification and escalation workflow built in
 * **Backend:** JavaScript (GlideRecord, Script Includes, Async Business Rules)
 * **Automation:** Flow Designer / Workflow Studio
 * **Version Control:** Git & GitHub via ServiceNow Studio Integration
+<img width="1853" height="863" alt="Screenshot 2026-08-13 163948" src="https://github.com/user-attachments/assets/7220f623-349b-4466-8ce1-2b3f7d76f3ff" />
